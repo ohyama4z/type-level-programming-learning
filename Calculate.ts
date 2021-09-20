@@ -16,3 +16,13 @@ type Sub<A extends number, B extends number> = ToNumber<
 >
 
 type sub1 = Sub<10, 3> // 7
+
+type Mul<A extends number, B extends number> = A extends 0
+  ? 0
+  : B extends 0
+  ? 0
+  : B extends 1
+  ? A
+  : Add<Mul<A, Sub<B, 1>>, A>
+
+type mul1 = Mul<3, 4>
